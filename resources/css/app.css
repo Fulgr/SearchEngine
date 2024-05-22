@@ -1,0 +1,34 @@
+* {
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #222222;
+    color: white;
+    height: 10vh;
+    border-bottom: 1px solid #666666;
+}
+
+.header img {
+    height: 15%;
+}
+
+.header input {
+    height: 30%;
+    width: 25%;
+    background-color: #333333;
+    border: 0;
+    color: white;
+    padding-left: 10px;
+}
+
+.searchbar {
+    height: 100%;
+    align-content: center;
+    margin-left: 10%;
+}
+
+.main {
+    background-color: #333333;
+    height: 90vh;
+}
