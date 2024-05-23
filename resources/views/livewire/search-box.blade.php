@@ -33,6 +33,7 @@
             <form wire:submit.prevent="updateWebsite">
                 <label for="name">Favicon:</label>
                 <input type="text" wire:model="updateFavicon" id="name"></input>
+                <img src="{{$updateFavicon}}" class="updateFavicon" id="backup-updateFavicon" onerror="standby('updateFavicon')">
                 <select wire:model="updateType" id="type">
                     @foreach($types as $type)
                         <option value="{{ $type->id }}">{{ $type->name }}</option>

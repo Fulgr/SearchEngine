@@ -141,3 +141,8 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.updateFavicon {
+    width: 100%;
+    height: 100%;
+}
