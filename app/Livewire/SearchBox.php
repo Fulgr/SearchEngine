@@ -30,7 +30,7 @@ class SearchBox extends Component
     {
         ray($this->selectedType);
         $websites = Website::where('title', 'like', '%'.$this->search.'%');
-        if ($this->selectedType != '0') {
+        if ($this->selectedType) {
             $websites->where('type_id', $this->selectedType);
         }
         $this->websites = $websites->get();
