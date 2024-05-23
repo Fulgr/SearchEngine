@@ -32,7 +32,7 @@ class SearchBox extends Component
     {
         $websites = $this->allwebsites;
         $websites = $websites->filter(function ($website) {
-            return stripos($website->title, $this->search) !== false;
+            return stripos($website->title.' '.$website->description, $this->search) !== false;
         });
         if ($this->selectedType) {
             $websites = $websites->filter(function ($website) {
