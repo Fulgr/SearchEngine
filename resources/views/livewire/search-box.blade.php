@@ -29,6 +29,7 @@
     <div class="main">
         @foreach($websites as $website)
             <div class="website">
+                <img src="{{$website->url}}/favicon.ico">
                 <div class="website-content">
                     <a href="{{$website->url}}">
                         <p class="website-url">{{ $website->url }}</p>
