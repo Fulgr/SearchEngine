@@ -10,6 +10,8 @@ class SearchBox extends Component
 {
     public $websites;
 
+    public $allwebsites;
+
     public $createWebsiteModal = false;
 
     public $message;
@@ -28,12 +30,16 @@ class SearchBox extends Component
 
     public function searchFunc()
     {
-        ray($this->selectedType);
-        $websites = Website::where('title', 'like', '%'.$this->search.'%');
+        $websites = $this->allwebsites;
+        $websites = $websites->filter(function ($website) {
+            return stripos($website->title, $this->search) !== false;
+        });
         if ($this->selectedType) {
-            $websites->where('type_id', $this->selectedType);
+            $websites = $websites->filter(function ($website) {
+                return $website->type_id == $this->selectedType;
+            });
         }
-        $this->websites = $websites->get();
+        $this->websites = $websites;
     }
 
     public function createWebsite()
@@ -70,6 +76,7 @@ class SearchBox extends Component
     public function mount()
     {
         $this->websites = Website::all();
+        $this->allwebsites = $this->websites;
         $this->types = Type::all();
     }
 
