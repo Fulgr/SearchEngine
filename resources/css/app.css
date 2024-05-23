@@ -2,6 +2,10 @@
     margin: 0 auto;
 }
 
+html {
+    background-color: #333333;
+}
+
 .header {
     background-color: #222222;
     color: white;
@@ -42,8 +46,7 @@
 }
 
 .main {
-    background-color: #333333;
-    height: 90vh;
+    height: 100%;
 }
 
 .modal {

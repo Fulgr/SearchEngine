@@ -39,7 +39,7 @@ class SearchBox extends Component
                 return $website->type_id == $this->selectedType;
             });
         }
-        $this->websites = $websites;
+        $this->websites = $websites->take(25);
     }
 
     public function createWebsite()
@@ -84,8 +84,8 @@ class SearchBox extends Component
 
     public function mount()
     {
-        $this->websites = Website::all()->sortByDesc('visits');
-        $this->allwebsites = $this->websites;
+        $this->allwebsites = Website::all()->sortByDesc('visits');
+        $this->websites = $this->allwebsites->take(25);
         $this->types = Type::all();
     }
 
