@@ -73,9 +73,18 @@ class SearchBox extends Component
         $this->createWebsiteModal = true;
     }
 
+    public function clickedWebsite($id)
+    {
+        $website = Website::find($id);
+        if ($website) {
+            $website->visits = $website->visits + 1;
+            $website->save();
+        }
+    }
+
     public function mount()
     {
-        $this->websites = Website::all();
+        $this->websites = Website::all()->sortByDesc('visits');
         $this->allwebsites = $this->websites;
         $this->types = Type::all();
     }

@@ -43,7 +43,7 @@
             <div class="website">
                 <img src="{{$website->url}}/favicon.ico" id="backup-{{$website->id}}" onerror="standby({{$website->id}})">
                 <div class="website-content">
-                    <a href="{{$website->url}}">
+                    <a href="{{$website->url}}" wire:click="clickedWebsite({{$website->id}})">
                         <p class="website-url">{{ $website->url }}</p>
                         <h2>{{ $website->title }}</h2>
                         <p>{{ $website->description }}</p>
