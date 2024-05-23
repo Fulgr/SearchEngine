@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +17,14 @@ class WebsiteFactory extends Factory
      */
     public function definition(): array
     {
+        $types = Type::all();
+        $type_id = $types->random()->id;
+
         return [
             'url' => $this->faker->url,
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'type_id' => 1,
+            'type_id' => $type_id,
         ];
     }
 }

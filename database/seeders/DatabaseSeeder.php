@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         Type::factory()->create([
             'name' => 'Online',
         ]);
-        // Website::factory()->count(100)->create();
+        Website::factory()->count(100)->create();
     }
 }

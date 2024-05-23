@@ -41,7 +41,7 @@
     <div class="main">
         @foreach($websites as $website)
             <div class="website">
-                <img src="{{$website->url}}/favicon.ico" id="backup-{{$website->id}}" onerror="standby({{$website->id}})">
+                <img src="{{$website->favicon}}" id="backup-{{$website->id}}" onerror="standby({{$website->id}})">
                 <div class="website-content">
                     <a href="{{$website->url}}" wire:click="clickedWebsite({{$website->id}})">
                         <p class="website-url">{{ $website->url }}</p>
