@@ -28,6 +28,14 @@ class SearchBox extends Component
 
     public $selectedType;
 
+    public $selectedWebsite;
+
+    public $updateFavicon;
+
+    public $updateType;
+
+    public $editWebsiteModal;
+
     public function searchFunc()
     {
         $websites = $this->allwebsites;
@@ -40,6 +48,48 @@ class SearchBox extends Component
             });
         }
         $this->websites = $websites->take(25);
+    }
+
+    public function delete($id)
+    {
+        $website = Website::find($id);
+        if ($website) {
+            $website->delete();
+        }
+        $this->editWebsiteModal = false;
+        $this->selectedWebsite = '';
+        $this->updateFavicon = '';
+        $this->updateType = '';
+        $this->allwebsites = Website::all()->sortByDesc('visits');
+        $this->searchFunc();
+    }
+
+    public function updateWebsite()
+    {
+        $this->selectedWebsite->favicon = $this->updateFavicon;
+        $this->selectedWebsite->type_id = $this->updateType;
+
+        $this->selectedWebsite->save();
+        $this->editWebsiteModal = false;
+        $this->selectedWebsite = '';
+        $this->updateFavicon = '';
+        $this->updateType = '';
+    }
+
+    public function openEditModal($id)
+    {
+        if ($this->editWebsiteModal) {
+            $this->editWebsiteModal = false;
+            $this->selectedWebsite = '';
+            $this->updateFavicon = '';
+            $this->updateType = '';
+
+            return;
+        }
+        $this->editWebsiteModal = true;
+        $this->selectedWebsite = Website::find($id);
+        $this->updateFavicon = $this->selectedWebsite->favicon;
+        $this->updateType = $this->selectedWebsite->type_id;
     }
 
     public function createWebsite()
