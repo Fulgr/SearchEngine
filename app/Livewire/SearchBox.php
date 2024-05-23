@@ -17,6 +17,13 @@ class SearchBox extends Component
 
     public $name;
 
+    public $search;
+
+    public function searchFunc()
+    {
+        $this->websites = Website::where('title', 'like', '%'.$this->search.'%')->get();
+    }
+
     public function createWebsite()
     {
         $this->validate([

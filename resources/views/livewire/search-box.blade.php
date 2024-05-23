@@ -21,8 +21,8 @@
     @endif
     <div class="header">
         <div class="searchbar">
-            <img src="images/searchicon.jpg" alt="logo" />
-            <input type="text" wire:model="search" placeholder="Search...">
+            <img src="images/searchicon.jpg" alt="logo" wire:click="searchFunc"/>
+            <input type="text" wire:model="search" placeholder="Search..." wire:keydown.enter="searchFunc"/>
         </div>
         <button wire:click="openCreateWebsiteModal">Add Website</button>
     </div>
