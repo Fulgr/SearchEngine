@@ -14,6 +14,12 @@
                 <label for="url">Description:</label>
                 <input type="text" wire:model="message" id="message" />
                 <span class="error">{{ $message }}</span>
+                <label for="type">Type:</label>
+                <select wire:model="type" id="type">
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
                 <button type="submit">Add</button>
             </form>
         </div>
@@ -25,6 +31,12 @@
             <input type="text" wire:model="search" placeholder="Search..." wire:keydown.enter="searchFunc"/>
         </div>
         <button wire:click="openCreateWebsiteModal">Add Website</button>
+        <select wire:model="selectedType" wire:change="searchFunc">
+            <option value="0">All types</option>
+            @foreach($types as $type)
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="main">
         @foreach($websites as $website)

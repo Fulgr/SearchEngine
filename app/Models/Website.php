@@ -9,5 +9,5 @@ class Website extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url', 'title', 'description'];
+    protected $fillable = ['url', 'title', 'description', 'type_id'];
 }

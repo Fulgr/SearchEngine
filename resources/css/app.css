@@ -22,7 +22,8 @@
     padding-left: 10px;
 }
 
-.header button {
+.header button,
+.header select {
     height: 30%;
     background: #333333;
     color: white;

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Type;
 use App\Models\Website;
 use Livewire\Component;
 
@@ -19,9 +20,20 @@ class SearchBox extends Component
 
     public $search;
 
+    public $types;
+
+    public $type = '1';
+
+    public $selectedType;
+
     public function searchFunc()
     {
-        $this->websites = Website::where('title', 'like', '%'.$this->search.'%')->get();
+        ray($this->selectedType);
+        $websites = Website::where('title', 'like', '%'.$this->search.'%');
+        if ($this->selectedType != '0') {
+            $websites->where('type_id', $this->selectedType);
+        }
+        $this->websites = $websites->get();
     }
 
     public function createWebsite()
@@ -35,11 +47,13 @@ class SearchBox extends Component
             'url' => $this->url,
             'title' => $this->name,
             'description' => $this->message,
+            'type_id' => $this->type,
         ]);
 
         $this->message = '';
         $this->url = '';
         $this->name = '';
+        $this->type = '';
         $this->createWebsiteModal = false;
     }
 
@@ -56,6 +70,7 @@ class SearchBox extends Component
     public function mount()
     {
         $this->websites = Website::all();
+        $this->types = Type::all();
     }
 
     public function render()
