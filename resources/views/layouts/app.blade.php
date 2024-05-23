@@ -8,5 +8,10 @@
 </head>
 <body>
     @yield('content')
+    <script>
+        function standby($id) {
+            document.getElementById('backup-'+$id).src = 'images/notfound.png'
+        }
+    </script>
 </body>
 </html>
