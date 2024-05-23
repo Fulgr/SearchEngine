@@ -15,6 +15,7 @@ html {
 
 .header img {
     height: 15%;
+    cursor: pointer;
 }
 
 .header input {
@@ -33,6 +34,7 @@ html {
     color: white;
     border: 0;
     padding: 0 10px;
+    cursor: pointer;
 }
 
 .header button:hover {
@@ -47,6 +49,10 @@ html {
 
 .main {
     height: 100%;
+}
+
+span {
+    cursor: pointer;
 }
 
 .modal {
@@ -86,6 +92,7 @@ html {
     color: white;
     border: 0;
     padding: 0 10px;
+    cursor: pointer;
 }
 
 .modal-content button:hover {
@@ -123,6 +130,7 @@ html {
     margin-top: 10px;
     margin-left: 10px;
     border-radius: 40%;
+    cursor: alias;
 }
 
 .website:hover {
